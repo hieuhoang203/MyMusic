@@ -17,26 +17,26 @@ public class SongService implements IService<Song, Long> {
     private SongRepository songRepository;
 
     @Override
-    public Song insert(Song obj) {
-        this.songRepository.save(obj);
-        return obj;
+    public Song insert(Song song) {
+        this.songRepository.save(song);
+        return song;
     }
 
     @Override
-    public Song update(Long aLong, Song obj) {
-        this.songRepository.save(obj);
-        return obj;
+    public Song update(Long id, Song song) {
+        this.songRepository.save(song);
+        return song;
     }
 
     @Override
-    public Song delete(Long aLong) {
-        this.songRepository.updateStatus(aLong);
-        return this.songRepository.findById(aLong).orElse(null);
+    public Song delete(Long id) {
+        this.songRepository.updateStatus(id);
+        return this.songRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Song detail(Long aLong) {
-        return this.songRepository.findById(aLong).orElse(null);
+    public Song detail(Long id) {
+        return this.songRepository.findById(id).orElse(null);
     }
 
     @Override

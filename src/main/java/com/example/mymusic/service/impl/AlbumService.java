@@ -17,26 +17,26 @@ public class AlbumService implements IService<Album, Long> {
     private AlbumRepository albumRepository;
 
     @Override
-    public Album insert(Album obj) {
-        this.albumRepository.save(obj);
-        return obj;
+    public Album insert(Album album) {
+        this.albumRepository.save(album);
+        return album;
     }
 
     @Override
-    public Album update(Long aLong, Album obj) {
-        this.albumRepository.save(obj);
-        return obj;
+    public Album update(Long id, Album album) {
+        this.albumRepository.save(album);
+        return album;
     }
 
     @Override
-    public Album delete(Long aLong) {
-        this.albumRepository.updateStatus(aLong);
-        return this.albumRepository.findById(aLong).orElse(null);
+    public Album delete(Long id) {
+        this.albumRepository.updateStatus(id);
+        return this.albumRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Album detail(Long aLong) {
-        return this.albumRepository.findById(aLong).orElse(null);
+    public Album detail(Long id) {
+        return this.albumRepository.findById(id).orElse(null);
     }
 
     @Override

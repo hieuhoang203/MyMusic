@@ -18,24 +18,24 @@ public class UserService implements IService<User, Long> {
     private UserRepository repository;
 
     @Override
-    public User insert(User obj) {
-        return this.repository.save(obj);
+    public User insert(User user) {
+        return this.repository.save(user);
     }
 
     @Override
-    public User update(Long aLong, User obj) {
-        return this.repository.save(obj);
+    public User update(Long id, User user) {
+        return this.repository.save(user);
     }
 
     @Override
-    public User delete(Long aLong) {
-        this.repository.updateStatus(aLong);
-        return this.repository.findById(aLong).orElse(null);
+    public User delete(Long id) {
+        this.repository.updateStatus(id);
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
-    public User detail(Long aLong) {
-        return this.repository.findById(aLong).orElse(null);
+    public User detail(Long id) {
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override

@@ -17,26 +17,26 @@ public class RoleService implements IService <Role, Byte> {
     private RoleRepository repository;
 
     @Override
-    public Role insert(Role obj) {
-        this.repository.save(obj);
-        return obj;
+    public Role insert(Role role) {
+        this.repository.save(role);
+        return role;
     }
 
     @Override
-    public Role update(Byte aByte, Role obj) {
-        this.repository.save(obj);
-        return obj;
+    public Role update(Byte id, Role role) {
+        this.repository.save(role);
+        return role;
     }
 
     @Override
-    public Role delete(Byte aByte) {
-        this.repository.updateStatus(aByte);
-        return this.repository.findById(aByte).orElse(null);
+    public Role delete(Byte id) {
+        this.repository.updateStatus(id);
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
-    public Role detail(Byte aByte) {
-        return this.repository.findById(aByte).orElse(null);
+    public Role detail(Byte id) {
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override

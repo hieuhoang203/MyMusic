@@ -17,26 +17,26 @@ public class AccountService implements IService<Account, String> {
     private AccountRepository accountRepository;
 
     @Override
-    public Account insert(Account obj) {
-        this.accountRepository.save(obj);
-        return obj;
+    public Account insert(Account account) {
+        this.accountRepository.save(account);
+        return account;
     }
 
     @Override
-    public Account update(String s, Account obj) {
-        this.accountRepository.save(obj);
-        return obj;
+    public Account update(String userName, Account account) {
+        this.accountRepository.save(account);
+        return account;
     }
 
     @Override
-    public Account delete(String s) {
-        this.accountRepository.updateStatus(s);
-        return this.accountRepository.findById(s).orElse(null);
+    public Account delete(String userName) {
+        this.accountRepository.updateStatus(userName);
+        return this.accountRepository.findById(userName).orElse(null);
     }
 
     @Override
-    public Account detail(String s) {
-        return this.accountRepository.findById(s).orElse(null);
+    public Account detail(String userName) {
+        return this.accountRepository.findById(userName).orElse(null);
     }
 
     @Override

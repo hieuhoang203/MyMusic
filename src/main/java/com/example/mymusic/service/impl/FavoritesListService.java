@@ -17,26 +17,26 @@ public class FavoritesListService implements IService<FavoritesList, Long> {
     private FavoritesListRepository favoritesListRepository;
 
     @Override
-    public FavoritesList insert(FavoritesList obj) {
-        this.favoritesListRepository.save(obj);
-        return obj;
+    public FavoritesList insert(FavoritesList favorites) {
+        this.favoritesListRepository.save(favorites);
+        return favorites;
     }
 
     @Override
-    public FavoritesList update(Long aLong, FavoritesList obj) {
-        this.favoritesListRepository.save(obj);
-        return obj;
+    public FavoritesList update(Long id, FavoritesList favorites) {
+        this.favoritesListRepository.save(favorites);
+        return favorites;
     }
 
     @Override
-    public FavoritesList delete(Long aLong) {
-        this.favoritesListRepository.updateStatus(aLong);
-        return this.favoritesListRepository.findById(aLong).orElse(null);
+    public FavoritesList delete(Long id) {
+        this.favoritesListRepository.updateStatus(id);
+        return this.favoritesListRepository.findById(id).orElse(null);
     }
 
     @Override
-    public FavoritesList detail(Long aLong) {
-        return this.favoritesListRepository.findById(aLong).orElse(null);
+    public FavoritesList detail(Long id) {
+        return this.favoritesListRepository.findById(id).orElse(null);
     }
 
     @Override

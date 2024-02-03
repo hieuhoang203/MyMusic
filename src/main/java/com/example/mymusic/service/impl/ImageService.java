@@ -17,26 +17,26 @@ public class ImageService implements IService<Image, Long> {
     private ImageRepository imageRepository;
 
     @Override
-    public Image insert(Image obj) {
-        this.imageRepository.save(obj);
-        return obj;
+    public Image insert(Image image) {
+        this.imageRepository.save(image);
+        return image;
     }
 
     @Override
-    public Image update(Long aLong, Image obj) {
-        this.imageRepository.save(obj);
-        return obj;
+    public Image update(Long id, Image image) {
+        this.imageRepository.save(image);
+        return image;
     }
 
     @Override
-    public Image delete(Long aLong) {
-        this.imageRepository.updateStatus(aLong);
-        return this.imageRepository.findById(aLong).orElse(null);
+    public Image delete(Long id) {
+        this.imageRepository.updateStatus(id);
+        return this.imageRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Image detail(Long aLong) {
-        return this.imageRepository.findById(aLong).orElse(null);
+    public Image detail(Long id) {
+        return this.imageRepository.findById(id).orElse(null);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.mymusic.controller.impl;
 
 import com.example.mymusic.controller.IController;
 import com.example.mymusic.entity.Role;
-import com.example.mymusic.entity.commonProperties.Status;
 import com.example.mymusic.service.impl.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,33 +16,33 @@ public class RoleController implements IController<Role, Byte> {
     private RoleService roleService;
 
     @Override
-    @GetMapping(value = "/{status}")
-    public Map<Byte, Role> select(@PathVariable String status) {
+    @GetMapping(value = "")
+    public Map<Byte, Role> select(@RequestParam(value = "status", defaultValue = "DANG_HOAT_DONG", required = false) String status) {
         return this.roleService.select(status);
     }
 
     @Override
     @PostMapping(value = "/save")
-    public Role insert(@RequestBody Role object) {
-        return this.roleService.insert(object);
+    public Role insert(@RequestBody Role role) {
+        return this.roleService.insert(role);
     }
 
     @Override
-    @PutMapping(value = "/update/{aByte}")
-    public Role update(@PathVariable Byte aByte, @RequestBody Role object) {
-        return this.roleService.update(aByte, object);
+    @PutMapping(value = "/update/{id}")
+    public Role update(@PathVariable Byte id, @RequestBody Role role) {
+        return this.roleService.update(id, role);
     }
 
     @Override
-    @DeleteMapping(value = "/delete/{aByte}")
-    public Role delete(@PathVariable Byte aByte) {
-        return this.roleService.delete(aByte);
+    @DeleteMapping(value = "/delete/{id}")
+    public Role delete(@PathVariable Byte id) {
+        return this.roleService.delete(id);
     }
 
     @Override
-    @GetMapping(value = "/search/{aByte}")
-    public Role search(@PathVariable Byte aByte) {
-        return this.roleService.detail(aByte);
+    @GetMapping(value = "/search/{id}")
+    public Role search(@PathVariable Byte id) {
+        return this.roleService.detail(id);
     }
 
 }
