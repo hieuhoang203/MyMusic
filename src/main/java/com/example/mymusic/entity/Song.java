@@ -2,20 +2,22 @@ package com.example.mymusic.entity;
 
 
 import com.example.mymusic.entity.commonProperties.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "album")
+@Table(name = "song")
 @Getter
 @Setter
 @AllArgsConstructor
-public class Song {
+public class Song implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +43,7 @@ public class Song {
     private Status status;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "songs")
+    @JsonIgnore
     private Set<FavoritesList> favoritesLists;
 
     public Song() {

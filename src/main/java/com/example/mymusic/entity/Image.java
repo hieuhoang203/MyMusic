@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
@@ -13,7 +14,7 @@ import java.sql.Date;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Image {
+public class Image implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,12 @@ public class Image {
 
     @OneToOne(mappedBy = "image")
     private User user;
+
+    @OneToOne(mappedBy = "image")
+    private Song song;
+
+    @OneToOne(mappedBy = "image")
+    private Album album;
 
     public Image() {
         this.date_create = new Date(new java.util.Date().getTime());

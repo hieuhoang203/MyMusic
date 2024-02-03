@@ -1,21 +1,20 @@
 package com.example.mymusic.service.impl;
 
 import com.example.mymusic.entity.Role;
-import com.example.mymusic.entity.commonProperties.Status;
 import com.example.mymusic.repositories.RoleRepository;
 import com.example.mymusic.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleService implements IService <Role, Byte> {
+
     @Autowired
     private RoleRepository repository;
-
 
     @Override
     public Role insert(Role obj) {
@@ -41,11 +40,10 @@ public class RoleService implements IService <Role, Byte> {
     }
 
     @Override
-    public Map<Byte, Role> select(Status status) {
-        Map<Byte, Role> roleMap = new HashMap<>();
-        this.repository.select(status).forEach((item) -> {
-            roleMap.put(item.getId(), item);
-        });
+    public Map<Byte, Role> select(String status) {
+        Map<Byte, Role> roleMap;
+        roleMap = this.repository.select(status).stream().collect(Collectors.toMap(Role::getId, Function.identity()));
         return roleMap;
     }
+
 }

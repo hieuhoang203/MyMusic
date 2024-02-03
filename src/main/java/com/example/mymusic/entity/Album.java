@@ -1,11 +1,13 @@
 package com.example.mymusic.entity;
 
 import com.example.mymusic.entity.commonProperties.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Album {
+public class Album implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,9 +42,11 @@ public class Album {
     private Status status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "album")
+    @JsonIgnore
     private Set<Song> songs;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "albums")
+    @JsonIgnore
     private Set<FavoritesList> favoritesLists;
 
     public Album() {

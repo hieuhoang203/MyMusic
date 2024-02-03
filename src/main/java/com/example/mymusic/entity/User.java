@@ -1,11 +1,13 @@
 package com.example.mymusic.entity;
 
 import com.example.mymusic.entity.commonProperties.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ import java.util.Set;
 @Setter
 @Getter
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     private Long id;
@@ -51,12 +53,15 @@ public class User {
             joinColumns = @JoinColumn(name = "user"),
             inverseJoinColumns = @JoinColumn(name = "idol")
     )
+    @JsonIgnore
     private Set<User> users;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
+    @JsonIgnore
     private Set<Album> albums;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnore
     private Set<FavoritesList> favoritesLists;
 
     public User() {

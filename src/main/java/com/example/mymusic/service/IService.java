@@ -15,6 +15,6 @@ public interface IService <T, ID> {
 
     T detail(ID id);
 
-    Map<ID, T> select(Status status);
+    Map<ID, T> select(String status);
 
 }

@@ -1,6 +1,7 @@
 package com.example.mymusic.entity;
 
 import com.example.mymusic.entity.commonProperties.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,7 +32,8 @@ public class Role {
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    @JsonIgnore
     private Set<Account> accounts;
 
     public Role() {
