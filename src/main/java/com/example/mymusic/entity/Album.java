@@ -34,6 +34,10 @@ public class Album implements Serializable {
     @JoinColumn(name = "author")
     private User author;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category")
+    private Category category;
+
     private Date date_create;
 
     private Date date_update;
